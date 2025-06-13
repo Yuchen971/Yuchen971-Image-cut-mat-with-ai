@@ -1,0 +1,7 @@
+numpy>=1.15.2
+Pillow>=5.2.0
+opencv-python>=4.0.0
+torch>=1.7.0
+torchvision>=0.8.0
+scikit-image>=0.14.0
+pyinstaller>=5.0.0
