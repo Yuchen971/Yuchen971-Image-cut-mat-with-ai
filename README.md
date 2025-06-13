@@ -1,6 +1,6 @@
 # BatchCut - AI-Powered Image Processing Tool
 
-BatchCut is a powerful desktop application that combines face detection and AI-powered background removal to process images efficiently. Built with Python and Tkinter, it provides an intuitive interface for both single image processing and batch operations.
+Little Image processing tool for Trendsi
 
 ## Features
 
@@ -134,9 +134,5 @@ This project is open source and available under the [MIT License](LICENSE).
 
 If you encounter any issues or have questions:
 1. Check the [Issues](https://github.com/Yuchen971/Yuchen971-Image-cut-mat-with-ai/issues) page
-2. Create a new issue with detailed description
+2. Create a new issue with a detailed description, and I probably won't reply
 3. Include system information and error messages if applicable
-
----
-
-**Made with ❤️ for efficient image processing**
