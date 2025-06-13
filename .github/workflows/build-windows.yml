@@ -25,43 +25,19 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
     
-    - name: Download U2NET model
+    - name: Create model directory and placeholder
       run: |
-        mkdir -p auto_cut_and_mat_image/ckpt
-        # You'll need to add the model file to your repository or download it here
-        # For now, we'll create a placeholder
-        echo "Model placeholder" > auto_cut_and_mat_image/ckpt/u2net.pth
+        mkdir auto_cut_and_mat_image\ckpt
+        echo Model placeholder > auto_cut_and_mat_image\ckpt\u2net.pth
     
     - name: Download face detection models
       run: |
-        # Download OpenCV DNN face detection models
-        curl -o "auto_cut_and_mat_image/Face Detection Model.caffemodel" "https://github.com/opencv/opencv_3rdparty/raw/dnn_samples_face_detector_20170830/res10_300x300_ssd_iter_140000.caffemodel"
-        curl -o "auto_cut_and_mat_image/Face Detector Prototxt.prototxt" "https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt"
+        curl -o "auto_cut_and_mat_image\Face Detection Model.caffemodel" "https://github.com/opencv/opencv_3rdparty/raw/dnn_samples_face_detector_20170830/res10_300x300_ssd_iter_140000.caffemodel"
+        curl -o "auto_cut_and_mat_image\Face Detector Prototxt.prototxt" "https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt"
     
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --name="BatchCut" ^
-                    --windowed ^
-                    --onefile ^
-                    --icon="auto_cut_and_mat_image/app_icon.ico" ^
-                    --add-data="auto_cut_and_mat_image/ckpt;ckpt" ^
-                    --add-data="auto_cut_and_mat_image/Face Detection Model.caffemodel;." ^
-                    --add-data="auto_cut_and_mat_image/Face Detector Prototxt.prototxt;." ^
-                    --hidden-import="torch" ^
-                    --hidden-import="torchvision" ^
-                    --hidden-import="cv2" ^
-                    --hidden-import="PIL" ^
-                    --hidden-import="numpy" ^
-                    --hidden-import="scikit-image" ^
-                    --hidden-import="skimage" ^
-                    --hidden-import="skimage.transform" ^
-                    --hidden-import="skimage.io" ^
-                    --hidden-import="skimage.color" ^
-                    --hidden-import="tkinter" ^
-                    --hidden-import="tkinter.ttk" ^
-                    --hidden-import="tkinter.filedialog" ^
-                    --hidden-import="tkinter.messagebox" ^
-                    auto_cut_and_mat_image/main.py
+        pyinstaller --name=BatchCut --windowed --onefile --icon=auto_cut_and_mat_image\app_icon.ico --add-data="auto_cut_and_mat_image\ckpt;ckpt" --add-data="auto_cut_and_mat_image\Face Detection Model.caffemodel;." --add-data="auto_cut_and_mat_image\Face Detector Prototxt.prototxt;." --hidden-import=torch --hidden-import=torchvision --hidden-import=cv2 --hidden-import=PIL --hidden-import=numpy --hidden-import=scikit-image --hidden-import=skimage --hidden-import=skimage.transform --hidden-import=skimage.io --hidden-import=skimage.color --hidden-import=tkinter --hidden-import=tkinter.ttk --hidden-import=tkinter.filedialog --hidden-import=tkinter.messagebox auto_cut_and_mat_image\main.py
     
     - name: Upload executable
       uses: actions/upload-artifact@v3
