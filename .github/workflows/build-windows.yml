@@ -40,7 +40,7 @@ jobs:
         pyinstaller --name=BatchCut --windowed --onefile --icon=auto_cut_and_mat_image\app_icon.ico --add-data="auto_cut_and_mat_image\ckpt;ckpt" --add-data="auto_cut_and_mat_image\Face Detection Model.caffemodel;." --add-data="auto_cut_and_mat_image\Face Detector Prototxt.prototxt;." --hidden-import=torch --hidden-import=torchvision --hidden-import=cv2 --hidden-import=PIL --hidden-import=numpy --hidden-import=scikit-image --hidden-import=skimage --hidden-import=skimage.transform --hidden-import=skimage.io --hidden-import=skimage.color --hidden-import=tkinter --hidden-import=tkinter.ttk --hidden-import=tkinter.filedialog --hidden-import=tkinter.messagebox auto_cut_and_mat_image\main.py
     
     - name: Upload executable
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: BatchCut-Windows
         path: dist/BatchCut.exe
