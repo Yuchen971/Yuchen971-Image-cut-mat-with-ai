@@ -1,0 +1,18 @@
+# Build files
+build/
+dist/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.spec
+
+# Model checkpoints
+auto_cut_and_mat_image/ckpt/u2net.pth
+auto_cut_and_mat_image/Face Detection Model.caffemodel
+auto_cut_and_mat_image/Face Detector Prototxt.prototxt
+
+# OS specific files
+.DS_Store
+Thumbs.db

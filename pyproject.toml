@@ -1,0 +1,55 @@
+[project]
+name = "batchcut"
+version = "1.0.0"
+description = "批量图像处理应用"
+authors = [
+    {name = "BatchCut Team"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.15.2",
+    "Pillow>=5.2.0",
+    "opencv-python>=4.0.0",
+    "torch>=1.7.0",
+    "torchvision>=0.8.0",
+    "scikit-image>=0.14.0",
+    "pyinstaller>=5.0.0",
+]
+
+[project.scripts]
+batchcut = "auto_cut_and_mat_image.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["auto_cut_and_mat_image"]
+
+[tool.pyinstaller]
+name = "BatchCut"
+console = false
+windowed = true
+icon = "auto_cut_and_mat_image/app_icon.ico"
+add-data = [
+    "auto_cut_and_mat_image/ckpt:ckpt",
+    "auto_cut_and_mat_image/Face Detection Model.caffemodel:.",
+    "auto_cut_and_mat_image/Face Detector Prototxt.prototxt:.",
+]
+hidden-imports = [
+    "torch",
+    "torchvision",
+    "cv2",
+    "PIL",
+    "numpy",
+    "scikit-image",
+    "skimage",
+    "skimage.transform",
+    "skimage.io",
+    "skimage.color",
+    "tkinter",
+    "tkinter.ttk",
+    "tkinter.filedialog",
+    "tkinter.messagebox",
+]
