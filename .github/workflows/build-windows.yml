@@ -25,10 +25,10 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
     
-    - name: Verify model files
+    - name: Download U2NET model
       run: |
-        dir auto_cut_and_mat_image\ckpt
-        echo "Model files verified"
+        mkdir -p auto_cut_and_mat_image\ckpt
+        curl -L -o "auto_cut_and_mat_image\ckpt\u2net.pth" "https://github.com/xuebinqin/U-2-Net/releases/download/v1.0/u2net.pth"
     
     - name: Download face detection models
       run: |
