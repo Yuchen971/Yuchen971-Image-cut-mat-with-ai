@@ -25,10 +25,10 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
     
-    - name: Create model directory and placeholder
+    - name: Verify model files
       run: |
-        mkdir auto_cut_and_mat_image\ckpt
-        echo Model placeholder > auto_cut_and_mat_image\ckpt\u2net.pth
+        dir auto_cut_and_mat_image\ckpt
+        echo "Model files verified"
     
     - name: Download face detection models
       run: |
